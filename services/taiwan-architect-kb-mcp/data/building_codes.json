@@ -1,0 +1,75 @@
+{
+  "_disclaimer": "PLACEHOLDER DATASET. These entries name real, well-known Taiwan statutes/regulation families at a title level only. No article numbers, clause text, or specific requirements are asserted here, because this session had no network access to verify current text against an authoritative source (e.g. 全國法規資料庫, law.moj.gov.tw) or against the referenced HJPLUS_Taiwan_Architect_KB repository. Each entry's `full_text` is intentionally empty and must be populated from an authoritative source before this KB is used for anything beyond a structural demo.",
+  "entries": [
+    {
+      "id": "tw-building-act",
+      "category": "statute",
+      "title": "建築法 (Building Act)",
+      "summary": "Primary statute governing building permits, construction supervision, and use of buildings in Taiwan.",
+      "full_text": "",
+      "status": "placeholder",
+      "source_url": "https://law.moj.gov.tw/",
+      "tags": ["建築法", "建築許可", "使用執照"]
+    },
+    {
+      "id": "tw-building-technical-regulations",
+      "category": "regulation",
+      "title": "建築技術規則 (Building Technical Regulations)",
+      "summary": "Technical regulation set implementing the Building Act, split into sub-volumes covering general provisions, design/construction, structure, and equipment.",
+      "full_text": "",
+      "status": "placeholder",
+      "source_url": "https://law.moj.gov.tw/",
+      "tags": ["建築技術規則", "建築設計施工編", "構造編", "設備編"]
+    },
+    {
+      "id": "tw-architects-act",
+      "category": "statute",
+      "title": "建築師法 (Architects Act)",
+      "summary": "Governs licensing, registration, and professional conduct requirements for architects practicing in Taiwan.",
+      "full_text": "",
+      "status": "placeholder",
+      "source_url": "https://law.moj.gov.tw/",
+      "tags": ["建築師法", "建築師執照", "專業責任"]
+    },
+    {
+      "id": "tw-fire-services-act",
+      "category": "statute",
+      "title": "消防法 (Fire Services Act)",
+      "summary": "Governs fire safety equipment, inspection, and fire-prevention requirements for buildings.",
+      "full_text": "",
+      "status": "placeholder",
+      "source_url": "https://law.moj.gov.tw/",
+      "tags": ["消防法", "消防安全設備", "消防檢查"]
+    },
+    {
+      "id": "tw-accessibility-requirements",
+      "category": "regulation",
+      "title": "無障礙建築物相關法規 (Accessible Building Regulations)",
+      "summary": "Cross-references accessibility design requirements for public buildings, drawn from the Building Technical Regulations and disability rights legislation.",
+      "full_text": "",
+      "status": "placeholder",
+      "source_url": "https://law.moj.gov.tw/",
+      "tags": ["無障礙設施", "身心障礙者權益保障法"]
+    },
+    {
+      "id": "tw-urban-planning-act",
+      "category": "statute",
+      "title": "都市計畫法 (Urban Planning Act)",
+      "summary": "Governs land use zoning and urban planning constraints relevant to building/construction projects.",
+      "full_text": "",
+      "status": "placeholder",
+      "source_url": "https://law.moj.gov.tw/",
+      "tags": ["都市計畫法", "土地使用分區"]
+    },
+    {
+      "id": "tw-government-procurement-act",
+      "category": "statute",
+      "title": "政府採購法 (Government Procurement Act)",
+      "summary": "Governs the procurement process for public construction and architecture/engineering services contracts, administered by the Public Construction Commission (工程會).",
+      "full_text": "",
+      "status": "placeholder",
+      "source_url": "https://law.moj.gov.tw/",
+      "tags": ["政府採購法", "公共工程", "決標", "招標"]
+    }
+  ]
+}

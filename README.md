@@ -1,6 +1,17 @@
 # gov-procurement-tracker
 
-An [MCP](https://modelcontextprotocol.io) server for searching and tracking
+This repo hosts two [MCP](https://modelcontextprotocol.io) servers:
+
+- **(this directory)** — searches and tracks Taiwan government procurement
+  records (tenders, awards, vendors, agencies).
+- **[`services/taiwan-architect-kb-mcp`](services/taiwan-architect-kb-mcp)**
+  — a Taiwan building-code / architect-regulation knowledge base that can
+  suggest relevant codes for a tender's description, cross-referencing the
+  procurement data above with construction regulation topics.
+
+---
+
+An MCP server for searching and tracking
 Taiwan government procurement records: tender announcements (招標公告), award
 announcements (決標公告), vendor award history, and agency procurement
 history.
