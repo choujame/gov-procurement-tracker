@@ -1,0 +1,30 @@
+{
+  "name": "gov-procurement-tracker",
+  "version": "0.1.0",
+  "description": "MCP server for tracking and searching Taiwan government procurement (tenders, awards, vendors, agencies)",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "gov-procurement-tracker": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}
