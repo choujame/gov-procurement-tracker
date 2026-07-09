@@ -90,6 +90,17 @@ npm run typecheck   # tsc --noEmit
 npm test            # vitest
 ```
 
+## Remote / mobile clients (HTTP transport)
+
+Not implemented yet. The stdio transport above only works with clients that
+spawn a local subprocess (e.g. Claude Desktop). To support remote/mobile
+clients this would need an MCP Streamable HTTP entrypoint — analogous to
+`services/taiwan-architect-kb-mcp/src/http_server.py` — built on
+`StreamableHTTPServerTransport` from `@modelcontextprotocol/sdk`. That
+wasn't added here because it can't be verified without npm registry access
+in this environment (see the caveat above). Deploying it publicly would
+also need your own HTTPS-capable hosting either way.
+
 ## Project layout
 
 ```

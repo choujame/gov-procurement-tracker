@@ -71,6 +71,59 @@ transport. Example client config:
 }
 ```
 
+## Running over HTTP (remote / mobile clients)
+
+Local stdio servers (above) only work with clients that can spawn a local
+subprocess on the same machine — e.g. Claude Desktop. Mobile apps and other
+remote clients need a server reachable over HTTPS instead. `src/http_server.py`
+exposes the same tool logic over the MCP **Streamable HTTP** transport: a
+single `POST /mcp` endpoint that accepts a JSON-RPC request (or batch) and
+returns a JSON-RPC response.
+
+```bash
+PORT=8765 MCP_HTTP_AUTH_TOKEN=changeme python3 src/http_server.py
+```
+
+- `PORT` — defaults to `8765`.
+- `MCP_HTTP_AUTH_TOKEN` — if set, every request must include
+  `Authorization: Bearer <token>`, or the server returns `401`. Leave unset
+  only for local testing; **set it before exposing this publicly**.
+- `GET /health` — plain health check, no auth required.
+- `GET /mcp` — intentionally returns `405`. This server has no
+  server-initiated messages to push (it's pure request/response), so the
+  optional SSE stream half of the Streamable HTTP transport isn't
+  implemented. Add it if you later add long-running tools or notifications.
+
+Verified locally in this repo's dev sandbox with real HTTP requests
+(`initialize`, `tools/list`, `tools/call` for all four tools, a
+notification-only request returning `202`, and both the unauthenticated and
+wrong-token `401` paths) — see the commit history for the exact test
+commands.
+
+### What you still need to do to actually use this from a phone
+
+This server only listens on `localhost` unless you deploy it somewhere with
+a public HTTPS address — that step needs your own hosting (a VPS, Fly.io,
+Render, Cloudflare Workers/Containers, etc.) and **could not be done or
+verified from this sandbox** (no outbound deploy access). A `Dockerfile` is
+included as a starting point:
+
+```bash
+docker build -t taiwan-architect-kb-mcp .
+docker run -p 8765:8765 -e MCP_HTTP_AUTH_TOKEN=changeme taiwan-architect-kb-mcp
+```
+
+(Not build-tested here either — pulling the `python:3.11-slim` base image
+needs registry access this sandbox doesn't have. It's a standard two-line
+Dockerfile, but verify it builds before relying on it.)
+
+You'll also need TLS termination in front of it (the app itself only speaks
+plain HTTP) — typically handled by whatever PaaS/reverse proxy you deploy
+behind. Finally, whether a given mobile Claude client can actually add a
+remote MCP server like this depends on that client's support for
+Streamable HTTP servers, which varies by app/version — check the client's
+own docs.
+
 ## Development
 
 ```bash
@@ -81,12 +134,14 @@ python3 -m unittest discover -s test -v
 
 ```
 src/
-  server.py      MCP stdio server (hand-rolled JSON-RPC, no SDK dependency)
-  store.py       JSON-file-backed KB store
-  textrank.py    Segmentation-free Chinese TextRank keyword extraction
+  server.py        MCP stdio server (hand-rolled JSON-RPC, no SDK dependency)
+  http_server.py    MCP Streamable HTTP server (same tool logic, for remote/mobile clients)
+  store.py          JSON-file-backed KB store
+  textrank.py        Segmentation-free Chinese TextRank keyword extraction
 data/
   building_codes.json   Placeholder KB entries (see Data provenance above)
 test/
   test_store.py
   test_textrank.py
+Dockerfile           Starting point for deploying http_server.py (untested, see above)
 ```
