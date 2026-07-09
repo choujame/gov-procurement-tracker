@@ -1,0 +1,9 @@
+# Copy to .dev.vars for local `wrangler dev` (gitignored). In production,
+# set these with `wrangler secret put <NAME>` instead — see README.
+
+GITHUB_CLIENT_ID=your-github-oauth-app-client-id
+GITHUB_CLIENT_SECRET=your-github-oauth-app-client-secret
+
+# Any long random string, e.g. `openssl rand -hex 32`. Used to HMAC-sign
+# the "already approved this client" cookie.
+COOKIE_ENCRYPTION_KEY=change-me-to-a-random-secret

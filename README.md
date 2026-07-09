@@ -7,7 +7,12 @@ This repo hosts two [MCP](https://modelcontextprotocol.io) servers:
 - **[`services/taiwan-architect-kb-mcp`](services/taiwan-architect-kb-mcp)**
   — a Taiwan building-code / architect-regulation knowledge base that can
   suggest relevant codes for a tender's description, cross-referencing the
-  procurement data above with construction regulation topics.
+  procurement data above with construction regulation topics. Runs locally
+  (stdio) or over HTTP.
+- **[`services/taiwan-architect-kb-mcp-cloudflare`](services/taiwan-architect-kb-mcp-cloudflare)**
+  — the same knowledge-base server, deployable as a remote Cloudflare
+  Worker behind GitHub OAuth, for use from mobile/remote MCP clients
+  instead of just local Claude Desktop.
 
 ---
 
